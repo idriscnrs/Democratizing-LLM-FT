@@ -24,3 +24,8 @@ Access to IDRIS’s GPU clusters enables **simple, efficient, and reproducible**
 ## Relancer les expériences
 `sbatch slurm/machin.slurm`
 
+
+## Poster
+![poster](doc/images/Poster3%20-%20nov25(3).png)
+
+
