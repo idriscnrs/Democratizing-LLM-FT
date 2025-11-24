@@ -1,5 +1,4 @@
-# Democratizing-LLM-FT
-## Scalable SFT Workflows Across IDRIS Computing Clusters
+# Democratizing-LLM-FT - Scalable SFT Workflows Across IDRIS Computing Clusters
 ----------
 ### Practical Large-Scale LLM Fine-Tuning on IDRIS Clusters
 We consider a realistic Instruct Fine-Tuning scenario using 64 GPUs, corresponding to the full DALIA system and a level of resource still accessible on the Jean Zay GPU partitions. Pretrained weights are loaded directly from the Hugging Face Hub, reflecting standard academic and industrial workflows. In this setup, heavy frameworks such as NeMo-Megatron, DeepSpeed, Nanotron, or TorchTitan add unnecessary complexity at this scale, relying on model-parallel strategies that are not required for **64-GPU training**. A **PyTorch-native pipeline**—using HF transformers/datasets, FSDP2, selective activation checkpointing, and torch.compile—offers the most flexible and efficient solution, assuming a modern interconnect and high-memory GPUs. We also compare it with *NeMo’s HFAutoModelForCausalLLM*, which allows loading HF models but remains immature and restricted to NVIDIA-only systems.
