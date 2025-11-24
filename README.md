@@ -14,8 +14,7 @@ Access to IDRIS’s GPU clusters enables **simple, efficient, and reproducible**
 
 In a realistic Instruct Fine-Tuning scenario using a limited surface of **64 GPUs**, with dense LLMs up to **72B parameters** (no Mixture-of-Experts) and a **4096 context length**, and assuming pretrained weights loaded directly from the **Hugging Face Hub**, we conclude that the **PyTorch FSDP2 + selective activation checkpointing + `torch.compile`** workflow offers the **best balance of performance, flexibility, clarity, and portability**.  
 
-This approach remains fully open, easy to configure, and can be deployed consistently across heterogeneous systems, making it the most practical and robust solution for large-scale SFT workloads in this resource envelope.
-
+This conclusion holds **only when GPUs provide sufficient memory (≥ 80 GB)** and are connected through a **high-bandwidth interconnect**. Under these conditions, the approach remains fully open, easy to configure, and deployable across heterogeneous systems, making it the most practical and robust solution for large-scale SFT workloads within this resource envelope.
 
 
 ## Points d'intérêts et de discussion
