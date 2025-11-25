@@ -92,6 +92,7 @@ model = AutoModelForCausalLM.from_pretrained(
     model_path,
     torch_dtype="bfloat16",
 )
+```
 
 For large models in the tens of billions of parameters, memory pressure appears at two stages:
 
