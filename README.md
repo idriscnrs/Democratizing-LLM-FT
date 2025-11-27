@@ -16,6 +16,12 @@ Future work will extend this democratization to **Mixture-of-Experts training** 
 
 Our realistic Instruct Fine-Tuning scenario follows the setup described in [Tulu 3: Pushing Frontiers in Open Language Model Post-Training (2024)](https://arxiv.org/abs/2411.15124).
 
+## ⚠️ Important Note on Scope and Fairness
+
+In this specific scenario — **dense SFT on 64 GPUs**, using pretrained weights from the HF Hub and relying on moderate batch sizes — a **PyTorch-native workflow with Hugging Face Transformers** is the most practical and efficient solution for us. This does **not** place NVIDIA NeMo at a disadvantage intentionally: the framework is simply **not evaluated here in the conditions where it shines**. We fully acknowledge that **NeMo becomes indispensable for other use cases**, such as large-scale pre-training, advanced model-parallelism, Mixture-of-Experts architectures, or complex multi-node pipelines.
+
+Similarly, **TorchTitan** is rapidly gaining relevance and deserves dedicated analysis in future work. Our focus on PyTorch+Transformers in this report reflects the narrow scope of this benchmark, not a general preference in all contexts.
+
 ---
 
 ## ✅ Conclusion
