@@ -110,7 +110,7 @@ if RANK == 0: print(
 ### Jean Zay
 DSDIR = Path(os.environ["DSDIR"])
 model_path = DSDIR / "HuggingFace_Models" / args.model
-dataset_path = "/lustre/fswork/dataset/tulu-3-sft-mixture/data"
+## to define dataset_path = "/xxx/xxx/dataset/tulu-3-sft-mixture/data"
 ### DALIA
 #DSDIR = Path(os.environ.get("ALL_WORK", "")) / "BC"
 #model_path = DSDIR / "HuggingFace_Models" / args.model
