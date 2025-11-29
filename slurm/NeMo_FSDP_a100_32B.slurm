@@ -24,8 +24,12 @@ export HF_DATASETS_CACHE="/lustre/fsn1/projects/idris/sos/ssos040/HF_CACHE/tulu3
 export SINGULARITY_BINDPATH="$WORK,$ALL_CCFRWORK,$DSDIR,$SCRATCH,$ALL_CCFRSCRATCH,$JOBSCRATCH,/lustre/fswork/dataset"
 
 ## Distribution setup
+## Distribution setup
 export MASTER_ADDR=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n1)
 export MASTER_PORT=29500
+export WORLD_SIZE=$SLURM_NTASKS
+export RANK=$SLURM_PROCID
+export LOCAL_RANK=$SLURM_LOCALID
 
 # detect the IB trouble
 export NCCL_DEBUG=WARN
