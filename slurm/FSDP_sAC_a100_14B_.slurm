@@ -3,7 +3,7 @@
 #SBATCH --output=logs/out/FSDP_sAC_a100_14B_%j.out 
 #SBATCH --error=logs/err/FSDP_sAC_a100_14B_%j.err
 #SBATCH --gres=gpu:8
-#SBATCH --nodes=16
+#SBATCH --nodes=8
 #SBATCH --ntasks-per-node=8
 #SBATCH --hint=nomultithread 
 #SBATCH --time=02:00:00
