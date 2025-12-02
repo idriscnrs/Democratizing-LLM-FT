@@ -37,6 +37,23 @@ Similarly, **TorchTitan** is rapidly gaining relevance and deserves dedicated an
 
 ![results](doc/images/SFTBench_results.png)
 
+All evaluations in this study were conducted on **64 GPUs**, with a **global batch size of 128**, a **4096-token sequence length**, and **bf16-mixed precision** (bf16 for compute, FP32 for optimizer states and parameter replicas).
+
+The only hyperparameters that were tuned are:
+
+- For Full pytorch solution, **the selective activation checkpointing ratio**, adjusted according to the available GPU memory
+|    sAC ratio    | A100-80GB | H100-80GB | GB200-186GB |
+|-----------------|-----------|-----------|-------------|
+|  Qwen2.5-14B    | 1/2 | 1/2 | 0   |
+|  Qwen2.5-32B    | 3/4 | 3/4 | 0   |
+|  Qwen2.5-72B    | 1   | 1   | 1/2 |
+
+
+- For NeMo solution, **The tensor parallelism dimension**, chosen based on the number of GPUs per compute node
+
+The tensor parallelism dimension is set to **TP=4** on the H100 and DALIA/GB200 partitions (4 GPUs per node) and to **TP=8** on the A100 octo-GPU partition, except for **Qwen2.5-72B**, where we use **TP=4** due to GPU memory limits that prevent TP=8 from running with a gradient accumulation of 1.
+
+
 ### Impact of Interconnect Performance
 A strong dependency on the cluster interconnect is visible:
 - Moving from **A100-OmniPath** to **H100-InfiniBand** yields a **×10 improvement** in throughput, mainly due to OmniPath becoming the limiting factor in distributed training.
